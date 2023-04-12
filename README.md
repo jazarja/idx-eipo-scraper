@@ -5,7 +5,7 @@ A scraper based on Scrapy should be developed to extract all IDX IPO data from e
 
 ## Run FlareSolverr Docker
 
-```sh
+```shell
 docker run -d \
   --name=flaresolverr \
   -p 8191:8191 \
@@ -14,3 +14,8 @@ docker run -d \
   ghcr.io/flaresolverr/flaresolverr:latest
 ```
 
+## Run Scraper
+
+```shell
+scrapy crawl ipo -o ipo.json
+```
