@@ -41,6 +41,7 @@ class IpoSpider(scrapy.Spider):
         code = response.xpath("//h5[contains(text(), 'Kode Emiten')]/following-sibling::p/text()").get()
         sector = response.xpath("//h5[contains(text(), 'Sektor')]/following-sibling::p/text()").get()
         subsector = response.xpath("//h5[contains(text(), 'Subsektor')]/following-sibling::p/text()").get()
+        lines_of_business  = response.xpath("//h5[contains(text(), 'Bidang usaha')]/following-sibling::p/text()").get()
         summary = response.xpath(
             "//h5[contains(text(), 'Ringkasan Perusahaan Emiten')]/following-sibling::p/text()").get()
         address = response.xpath("//h5[contains(text(), 'Alamat')]/following-sibling::p/text()").get()
@@ -55,11 +56,25 @@ class IpoSpider(scrapy.Spider):
 
         underwriter = ', '.join(underwriters)
 
+        book_building_date = response.xpath("//h5[contains(text(), 'Book Building')]/following-sibling::p/text()").get()
+
+        book_building_price = response.xpath("//h5[contains(text(), 'Book Building')]/following-sibling::p[2]/text()").get()
+
+        pooling_date = response.xpath("//h5[contains(text(), 'Penawaran Umum')]/following-sibling::p/text()").get()
+
+        pooling_price = response.xpath("//h5[contains(text(), 'Penawaran Umum')]/following-sibling::p[2]/text()").get()
+
+        distribution_date = response.xpath("//h5[contains(text(), 'Distribusi')]/following-sibling::p/text()").get()
+
+        listing_date = response.xpath("//h5[contains(text(), 'Tanggal Pencatatan')]/following-sibling::p/text()").get()
+
+
         data = {
             "company_name": company_name,
             "code": code,
             "sector": sector,
             "subsector": subsector,
+            "lines_of_business" : lines_of_business,
             "summary": summary,
             "address": address,
             "website": website,
@@ -67,6 +82,13 @@ class IpoSpider(scrapy.Spider):
             "percent_total_shares": percent_total_shares,
             "underwriter": underwriter,
             "admin_participant" : admin_participant,
+            "book_building_date" : book_building_date,
+            "pooling_date" : pooling_date,
+            "distribution_date" : distribution_date,
+            "listing_date" : listing_date,
+            "book_building_price" : book_building_price,
+            "pooling_price" : pooling_price,
+
         }
 
         # Return the dictionary
