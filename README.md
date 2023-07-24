@@ -1,6 +1,6 @@
 # e-IPO Scraper
 
-A scraper based on Scrapy should be developed to extract all IDX IPO data from e-ipo.co.id.
+A scraper based on Scrapy to extract all IDX IPO data from e-ipo.co.id.
 
 
 ## Run FlareSolverr Docker
